@@ -290,6 +290,19 @@ print(torch.cuda.is_available())
 
 从下文提供的[数据集下载链接](https://www.modelscope.cn/datasets/gongjy/minimind_dataset/files) 下载所需数据文件，并放入 `./dataset` 目录
 
+也可以使用脚本一键下载（默认下载 mini 组合到 `./dataset`）：
+
+```bash
+# 默认下载 pretrain_t2t_mini + sft_t2t_mini
+python scripts/download_dataset.py
+# 查看可下载的文件
+python scripts/download_dataset.py --list
+# 指定文件（可省略.jsonl后缀），all=全部
+python scripts/download_dataset.py --files rlaif dpo
+# 使用 HuggingFace 下载（国内可先设置 HF_ENDPOINT=https://hf-mirror.com）
+python scripts/download_dataset.py --source hf
+```
+
 > 当前默认仅需下载 `pretrain_t2t_mini.jsonl` 与 `sft_t2t_mini.jsonl`，即可较快复现 `MiniMind Zero` 对话模型。
 如有更多需求，下文提供多种搭配方案，可根据自身任务目标与 GPU 资源灵活选择。
 
