@@ -1,0 +1,142 @@
+{"id": "MATH-001", "domain": "数学与逻辑", "difficulty": "基础", "skill": "概念定义", "question": "什么是质数？请用自己的话解释。"}
+{"id": "MATH-002", "domain": "数学与逻辑", "difficulty": "基础", "skill": "事实判断", "question": "数字 0 是偶数吗？为什么？"}
+{"id": "MATH-003", "domain": "数学与逻辑", "difficulty": "基础", "skill": "计算应用", "question": "3/4 和 2/3 哪个更大？"}
+{"id": "MATH-004", "domain": "数学与逻辑", "difficulty": "基础", "skill": "关系辨析", "question": "平均数和中位数有什么区别？"}
+{"id": "MATH-005", "domain": "数学与逻辑", "difficulty": "进阶", "skill": "机制解释", "question": "为什么在通常的实数运算中不能除以 0？"}
+{"id": "MATH-006", "domain": "数学与逻辑", "difficulty": "进阶", "skill": "概念定义", "question": "标准差较大通常意味着一组数据具有什么特点？"}
+{"id": "MATH-007", "domain": "数学与逻辑", "difficulty": "进阶", "skill": "关系辨析", "question": "互斥事件和独立事件有什么区别？"}
+{"id": "MATH-008", "domain": "数学与逻辑", "difficulty": "进阶", "skill": "计算应用", "question": "一个盒子里有 3 个红球和 2 个蓝球，不放回连续抽两个球，两个都是红球的概率是多少？"}
+{"id": "MATH-009", "domain": "数学与逻辑", "difficulty": "挑战", "skill": "逻辑推理", "question": "“如果下雨，地面就湿了。现在地面湿了，所以一定下过雨。”这个推理有效吗？为什么？"}
+{"id": "MATH-010", "domain": "数学与逻辑", "difficulty": "挑战", "skill": "机制解释", "question": "为什么观察到两个变量高度相关，仍然不能直接断定其中一个导致了另一个？"}
+{"id": "PHYS-001", "domain": "物理学", "difficulty": "基础", "skill": "概念定义", "question": "质量和重量有什么区别？"}
+{"id": "PHYS-002", "domain": "物理学", "difficulty": "基础", "skill": "事实判断", "question": "声音能在完全真空中传播吗？"}
+{"id": "PHYS-003", "domain": "物理学", "difficulty": "基础", "skill": "机制解释", "question": "为什么金属勺放在热汤里一段时间后，勺柄也会变热？"}
+{"id": "PHYS-004", "domain": "物理学", "difficulty": "基础", "skill": "事实记忆", "question": "国际单位制中，能量的单位是什么？"}
+{"id": "PHYS-005", "domain": "物理学", "difficulty": "进阶", "skill": "概念定义", "question": "什么是惯性？"}
+{"id": "PHYS-006", "domain": "物理学", "difficulty": "进阶", "skill": "关系辨析", "question": "牛顿第三定律中的作用力与反作用力，是否作用在同一个物体上？"}
+{"id": "PHYS-007", "domain": "物理学", "difficulty": "进阶", "skill": "机制解释", "question": "为什么山顶上的水通常比海平面更容易沸腾？"}
+{"id": "PHYS-008", "domain": "物理学", "difficulty": "进阶", "skill": "计算应用", "question": "一个 6 欧姆的电阻两端加上 12 伏电压，通过它的电流是多少安培？"}
+{"id": "PHYS-009", "domain": "物理学", "difficulty": "挑战", "skill": "机制解释", "question": "为什么天空在晴朗的白天通常呈蓝色？"}
+{"id": "PHYS-010", "domain": "物理学", "difficulty": "挑战", "skill": "机制解释", "question": "为什么量子纠缠本身不能用来传递超光速的信息？"}
+{"id": "CHEM-001", "domain": "化学", "difficulty": "基础", "skill": "概念定义", "question": "原子和分子有什么区别？"}
+{"id": "CHEM-002", "domain": "化学", "difficulty": "基础", "skill": "事实判断", "question": "pH 为 3 的水溶液通常是酸性还是碱性？"}
+{"id": "CHEM-003", "domain": "化学", "difficulty": "基础", "skill": "事实记忆", "question": "化学式 H₂O 表示什么物质？"}
+{"id": "CHEM-004", "domain": "化学", "difficulty": "基础", "skill": "机制解释", "question": "铁制品生锈一般需要哪些环境条件？"}
+{"id": "CHEM-005", "domain": "化学", "difficulty": "进阶", "skill": "关系辨析", "question": "化学元素和化合物有什么区别？"}
+{"id": "CHEM-006", "domain": "化学", "difficulty": "进阶", "skill": "概念定义", "question": "什么是催化剂？它在反应中的作用是什么？"}
+{"id": "CHEM-007", "domain": "化学", "difficulty": "进阶", "skill": "机制解释", "question": "为什么食盐能溶解在水中？"}
+{"id": "CHEM-008", "domain": "化学", "difficulty": "进阶", "skill": "概念定义", "question": "同位素是什么？同一元素的不同同位素有什么相同点？"}
+{"id": "CHEM-009", "domain": "化学", "difficulty": "挑战", "skill": "关系辨析", "question": "化学反应达到动态平衡，是否意味着正反应和逆反应都停止了？"}
+{"id": "CHEM-010", "domain": "化学", "difficulty": "挑战", "skill": "机制解释", "question": "为什么温度改变可能使某些可逆反应的平衡组成发生变化？"}
+{"id": "BIO-001", "domain": "生物学", "difficulty": "基础", "skill": "概念定义", "question": "细胞是什么？"}
+{"id": "BIO-002", "domain": "生物学", "difficulty": "基础", "skill": "概念定义", "question": "DNA 在生物体中主要承担什么功能？"}
+{"id": "BIO-003", "domain": "生物学", "difficulty": "基础", "skill": "事实记忆", "question": "绿色植物进行光合作用主要需要哪些原料和能量来源？"}
+{"id": "BIO-004", "domain": "生物学", "difficulty": "基础", "skill": "关系辨析", "question": "细菌和病毒有什么主要区别？"}
+{"id": "BIO-005", "domain": "生物学", "difficulty": "进阶", "skill": "概念定义", "question": "抗体在人体免疫系统中起什么作用？"}
+{"id": "BIO-006", "domain": "生物学", "difficulty": "进阶", "skill": "机制解释", "question": "自然选择如何影响一个种群中某种遗传特征的比例？"}
+{"id": "BIO-007", "domain": "生物学", "difficulty": "进阶", "skill": "机制解释", "question": "为什么抗生素通常不能治疗病毒感染？"}
+{"id": "BIO-008", "domain": "生物学", "difficulty": "进阶", "skill": "概念定义", "question": "线粒体在真核细胞中主要有什么作用？"}
+{"id": "BIO-009", "domain": "生物学", "difficulty": "挑战", "skill": "逻辑推理", "question": "一个遗传性状由显性等位基因决定，是否表示这种性状在人群中必然更常见？"}
+{"id": "BIO-010", "domain": "生物学", "difficulty": "挑战", "skill": "机制解释", "question": "有性生殖为什么能增加后代之间的遗传差异？"}
+{"id": "EARTH-001", "domain": "地球与天文学", "difficulty": "基础", "skill": "事实记忆", "question": "地球自转一周大约需要多长时间？"}
+{"id": "EARTH-002", "domain": "地球与天文学", "difficulty": "基础", "skill": "事实记忆", "question": "太阳系中离太阳最近的行星是哪颗？"}
+{"id": "EARTH-003", "domain": "地球与天文学", "difficulty": "基础", "skill": "机制解释", "question": "地球上白天和黑夜交替的主要原因是什么？"}
+{"id": "EARTH-004", "domain": "地球与天文学", "difficulty": "基础", "skill": "概念定义", "question": "光年是时间单位还是距离单位？"}
+{"id": "EARTH-005", "domain": "地球与天文学", "difficulty": "进阶", "skill": "机制解释", "question": "地球为什么会出现四季变化？"}
+{"id": "EARTH-006", "domain": "地球与天文学", "difficulty": "进阶", "skill": "机制解释", "question": "月亮为什么会呈现不同的月相？"}
+{"id": "EARTH-007", "domain": "地球与天文学", "difficulty": "进阶", "skill": "关系辨析", "question": "日食和月食有什么区别？"}
+{"id": "EARTH-008", "domain": "地球与天文学", "difficulty": "进阶", "skill": "机制解释", "question": "板块运动为什么能引发地震？"}
+{"id": "EARTH-009", "domain": "地球与天文学", "difficulty": "挑战", "skill": "机制解释", "question": "天文学家怎样利用星系光谱中的红移研究宇宙？"}
+{"id": "EARTH-010", "domain": "地球与天文学", "difficulty": "挑战", "skill": "关系辨析", "question": "恒星的视星等和绝对星等有什么区别？"}
+{"id": "HIST-001", "domain": "历史", "difficulty": "基础", "skill": "事实记忆", "question": "中国历史上秦朝完成统一通常被定为哪一年？"}
+{"id": "HIST-002", "domain": "历史", "difficulty": "基础", "skill": "事实记忆", "question": "唐朝之前紧接着的统一王朝是哪一个？"}
+{"id": "HIST-003", "domain": "历史", "difficulty": "基础", "skill": "事实记忆", "question": "第一次世界大战开始于哪一年？"}
+{"id": "HIST-004", "domain": "历史", "difficulty": "基础", "skill": "事实记忆", "question": "欧洲工业革命最早大规模发生在哪个国家？"}
+{"id": "HIST-005", "domain": "历史", "difficulty": "进阶", "skill": "事实记忆", "question": "法国大革命通常以哪一年为起点？"}
+{"id": "HIST-006", "domain": "历史", "difficulty": "进阶", "skill": "事实记忆", "question": "西罗马帝国的灭亡通常以哪一年为标志？"}
+{"id": "HIST-007", "domain": "历史", "difficulty": "进阶", "skill": "机制解释", "question": "印刷技术的传播为什么对近代欧洲知识传播产生重大影响？"}
+{"id": "HIST-008", "domain": "历史", "difficulty": "进阶", "skill": "概念定义", "question": "为什么美苏之间的长期对抗被称为“冷战”？"}
+{"id": "HIST-009", "domain": "历史", "difficulty": "挑战", "skill": "关系辨析", "question": "研究历史时，一手史料和二手史料有什么区别？"}
+{"id": "HIST-010", "domain": "历史", "difficulty": "挑战", "skill": "方法辨析", "question": "历史学家为什么不能仅凭单一史料就断言某个复杂历史事件的全部原因？"}
+{"id": "GEO-001", "domain": "地理与社会", "difficulty": "基础", "skill": "事实记忆", "question": "地球上面积最大的海洋是哪一个？"}
+{"id": "GEO-002", "domain": "地理与社会", "difficulty": "基础", "skill": "概念定义", "question": "赤道把地球分成哪两个半球？"}
+{"id": "GEO-003", "domain": "地理与社会", "difficulty": "基础", "skill": "概念定义", "question": "地图上的纬度和经度分别表示什么？"}
+{"id": "GEO-004", "domain": "地理与社会", "difficulty": "基础", "skill": "关系辨析", "question": "天气和气候有什么区别？"}
+{"id": "GEO-005", "domain": "地理与社会", "difficulty": "进阶", "skill": "机制解释", "question": "为什么世界各地要使用不同的时区？"}
+{"id": "GEO-006", "domain": "地理与社会", "difficulty": "进阶", "skill": "机制解释", "question": "季风通常是怎样形成的？"}
+{"id": "GEO-007", "domain": "地理与社会", "difficulty": "进阶", "skill": "概念定义", "question": "城市化是什么意思？"}
+{"id": "GEO-008", "domain": "地理与社会", "difficulty": "进阶", "skill": "关系辨析", "question": "人口总数和人口密度有什么区别？"}
+{"id": "GEO-009", "domain": "地理与社会", "difficulty": "挑战", "skill": "机制解释", "question": "为什么墨卡托投影地图会夸大一些高纬度地区的面积？"}
+{"id": "GEO-010", "domain": "地理与社会", "difficulty": "挑战", "skill": "关系辨析", "question": "为什么一个国家人均 GDP 较高，不一定代表所有居民都拥有较高的生活质量？"}
+{"id": "ECON-001", "domain": "经济与金融", "difficulty": "基础", "skill": "概念定义", "question": "通货膨胀是什么意思？"}
+{"id": "ECON-002", "domain": "经济与金融", "difficulty": "基础", "skill": "机制解释", "question": "在其他条件不变时，一种商品的需求增加通常会怎样影响它的市场价格？"}
+{"id": "ECON-003", "domain": "经济与金融", "difficulty": "基础", "skill": "关系辨析", "question": "营业收入和利润有什么区别？"}
+{"id": "ECON-004", "domain": "经济与金融", "difficulty": "基础", "skill": "概念定义", "question": "银行存款的利息是什么？"}
+{"id": "ECON-005", "domain": "经济与金融", "difficulty": "进阶", "skill": "概念定义", "question": "国内生产总值（GDP）主要衡量什么？"}
+{"id": "ECON-006", "domain": "经济与金融", "difficulty": "进阶", "skill": "关系辨析", "question": "名义工资和实际工资有什么区别？"}
+{"id": "ECON-007", "domain": "经济与金融", "difficulty": "进阶", "skill": "概念定义", "question": "经济学中的机会成本是什么意思？"}
+{"id": "ECON-008", "domain": "经济与金融", "difficulty": "进阶", "skill": "概念定义", "question": "市场中的逆向选择是什么意思？"}
+{"id": "ECON-009", "domain": "经济与金融", "difficulty": "挑战", "skill": "机制解释", "question": "中央银行提高政策利率为什么可能抑制通货膨胀？"}
+{"id": "ECON-010", "domain": "经济与金融", "difficulty": "挑战", "skill": "机制解释", "question": "为什么投资分散化通常能降低个别资产的风险，却无法完全消除系统性风险？"}
+{"id": "COMP-001", "domain": "计算机与网络", "difficulty": "基础", "skill": "关系辨析", "question": "bit（比特）和 byte（字节）有什么区别？"}
+{"id": "COMP-002", "domain": "计算机与网络", "difficulty": "基础", "skill": "关系辨析", "question": "内存 RAM 和硬盘或 SSD 的主要区别是什么？"}
+{"id": "COMP-003", "domain": "计算机与网络", "difficulty": "基础", "skill": "概念定义", "question": "操作系统主要负责什么工作？"}
+{"id": "COMP-004", "domain": "计算机与网络", "difficulty": "基础", "skill": "概念定义", "question": "HTTP 协议主要用于什么？"}
+{"id": "COMP-005", "domain": "计算机与网络", "difficulty": "进阶", "skill": "关系辨析", "question": "IP 地址和域名有什么区别？"}
+{"id": "COMP-006", "domain": "计算机与网络", "difficulty": "进阶", "skill": "关系辨析", "question": "编程函数的参数和返回值有什么区别？"}
+{"id": "COMP-007", "domain": "计算机与网络", "difficulty": "进阶", "skill": "关系辨析", "question": "哈希和加密有什么根本区别？"}
+{"id": "COMP-008", "domain": "计算机与网络", "difficulty": "进阶", "skill": "机制解释", "question": "数据库建立索引为什么通常能加快某些查询？"}
+{"id": "COMP-009", "domain": "计算机与网络", "difficulty": "挑战", "skill": "关系辨析", "question": "TCP 和 UDP 的主要区别是什么？分别适合什么类型的应用？"}
+{"id": "COMP-010", "domain": "计算机与网络", "difficulty": "挑战", "skill": "概念定义", "question": "机器学习中的过拟合是什么？如何在未见过的数据上发现它？"}
+{"id": "LANG-001", "domain": "语言与表达", "difficulty": "基础", "skill": "概念定义", "question": "什么是近义词？请举出一组例子。"}
+{"id": "LANG-002", "domain": "语言与表达", "difficulty": "基础", "skill": "概念定义", "question": "什么是反义词？请举出一组例子。"}
+{"id": "LANG-003", "domain": "语言与表达", "difficulty": "基础", "skill": "关系辨析", "question": "句式“因为……所以……”通常表达什么逻辑关系？"}
+{"id": "LANG-004", "domain": "语言与表达", "difficulty": "基础", "skill": "词义消歧", "question": "“我买了一个苹果”和“我买了一台苹果电脑”中的“苹果”有什么不同？"}
+{"id": "LANG-005", "domain": "语言与表达", "difficulty": "进阶", "skill": "概念定义", "question": "现代汉语中的主语、谓语和宾语分别起什么作用？"}
+{"id": "LANG-006", "domain": "语言与表达", "difficulty": "进阶", "skill": "事实记忆", "question": "成语“画蛇添足”通常用来形容什么情况？"}
+{"id": "LANG-007", "domain": "语言与表达", "difficulty": "进阶", "skill": "关系辨析", "question": "明喻和暗喻有什么区别？请各举一个例子。"}
+{"id": "LANG-008", "domain": "语言与表达", "difficulty": "进阶", "skill": "关系辨析", "question": "英语中的一般过去时和现在完成时在用法上有什么主要区别？"}
+{"id": "LANG-009", "domain": "语言与表达", "difficulty": "挑战", "skill": "语义分析", "question": "“所有学生都读过一本书”这句话可能有哪两种不同理解？"}
+{"id": "LANG-010", "domain": "语言与表达", "difficulty": "挑战", "skill": "语义分析", "question": "“这件事未必不可能发生”和“这件事一定会发生”表达的确定程度相同吗？"}
+{"id": "SCI-001", "domain": "科学方法与哲学", "difficulty": "基础", "skill": "概念定义", "question": "科学研究中的假设是什么意思？"}
+{"id": "SCI-002", "domain": "科学方法与哲学", "difficulty": "基础", "skill": "关系辨析", "question": "观察到的事实和对事实的解释有什么区别？"}
+{"id": "SCI-003", "domain": "科学方法与哲学", "difficulty": "基础", "skill": "概念定义", "question": "科学实验的可重复性是什么意思？"}
+{"id": "SCI-004", "domain": "科学方法与哲学", "difficulty": "基础", "skill": "关系辨析", "question": "一个人的观点与可以被证据检验的主张有什么区别？"}
+{"id": "SCI-005", "domain": "科学方法与哲学", "difficulty": "进阶", "skill": "概念定义", "question": "一个理论具有可证伪性是什么意思？"}
+{"id": "SCI-006", "domain": "科学方法与哲学", "difficulty": "进阶", "skill": "概念定义", "question": "统计研究中的混杂变量是什么？"}
+{"id": "SCI-007", "domain": "科学方法与哲学", "difficulty": "进阶", "skill": "关系辨析", "question": "随机抽样和随机分组在研究中有什么区别？"}
+{"id": "SCI-008", "domain": "科学方法与哲学", "difficulty": "进阶", "skill": "方法辨析", "question": "为什么论文通过同行评审并不意味着它的结论一定正确？"}
+{"id": "SCI-009", "domain": "科学方法与哲学", "difficulty": "挑战", "skill": "概念定义", "question": "奥卡姆剃刀原则的核心意思是什么？它能直接证明哪一个理论为真吗？"}
+{"id": "SCI-010", "domain": "科学方法与哲学", "difficulty": "挑战", "skill": "关系辨析", "question": "“水在标准条件下何时沸腾”和“人应当如何生活”这两种问题在论证方式上有什么根本差别？"}
+{"id": "ENG-001", "domain": "工程与日常技术", "difficulty": "基础", "skill": "机制解释", "question": "为什么冰箱内部能变冷，而冰箱背面有时会变热？"}
+{"id": "ENG-002", "domain": "工程与日常技术", "difficulty": "基础", "skill": "概念定义", "question": "家庭电路中的保险丝或断路器主要用于什么？"}
+{"id": "ENG-003", "domain": "工程与日常技术", "difficulty": "基础", "skill": "机制解释", "question": "雨衣为什么能阻挡雨水浸透衣服？"}
+{"id": "ENG-004", "domain": "工程与日常技术", "difficulty": "基础", "skill": "事实判断", "question": "两块分别重 2 千克的铁和棉花，哪一个质量更大？"}
+{"id": "ENG-005", "domain": "工程与日常技术", "difficulty": "进阶", "skill": "机制解释", "question": "高压锅为什么能比普通锅更快地煮熟某些食物？"}
+{"id": "ENG-006", "domain": "工程与日常技术", "difficulty": "进阶", "skill": "机制解释", "question": "汽车刹车时，车辆原来的动能主要转化成了什么？"}
+{"id": "ENG-007", "domain": "工程与日常技术", "difficulty": "进阶", "skill": "关系辨析", "question": "电池的电压（V）和容量（mAh）分别表示什么？"}
+{"id": "ENG-008", "domain": "工程与日常技术", "difficulty": "进阶", "skill": "机制解释", "question": "自行车通过改变齿轮传动比，为什么会影响踩踏的费力程度和车轮转速？"}
+{"id": "ENG-009", "domain": "工程与日常技术", "difficulty": "挑战", "skill": "关系辨析", "question": "连接网站时出现 HTTPS 标记，是否就意味着这个网站一定可靠、不会诈骗？"}
+{"id": "ENG-010", "domain": "工程与日常技术", "difficulty": "挑战", "skill": "机制解释", "question": "为什么汽车的 12V 蓄电池在寒冷天气可能更难启动发动机或唤醒车辆系统？"}
+{"id": "ART-001", "domain": "文学、文化与艺术", "difficulty": "基础", "skill": "事实记忆", "question": "唐代诗人李白生活在哪个朝代？"}
+{"id": "ART-002", "domain": "文学、文化与艺术", "difficulty": "基础", "skill": "事实记忆", "question": "《红楼梦》的主要作者通常被认为是谁？"}
+{"id": "ART-003", "domain": "文学、文化与艺术", "difficulty": "基础", "skill": "概念定义", "question": "文学作品中的“人物形象”通常包含哪些方面？"}
+{"id": "ART-004", "domain": "文学、文化与艺术", "difficulty": "基础", "skill": "关系辨析", "question": "小说和散文在常见写作特点上有什么区别？"}
+{"id": "ART-005", "domain": "文学、文化与艺术", "difficulty": "进阶", "skill": "概念定义", "question": "绘画中的线性透视主要用来表现什么？"}
+{"id": "ART-006", "domain": "文学、文化与艺术", "difficulty": "进阶", "skill": "关系辨析", "question": "音乐中的旋律和节奏有什么区别？"}
+{"id": "ART-007", "domain": "文学、文化与艺术", "difficulty": "进阶", "skill": "概念定义", "question": "诗歌中的押韵是什么意思？"}
+{"id": "ART-008", "domain": "文学、文化与艺术", "difficulty": "进阶", "skill": "关系辨析", "question": "文学作品中的叙述者是否必然等同于现实中的作者？"}
+{"id": "ART-009", "domain": "文学、文化与艺术", "difficulty": "挑战", "skill": "关系辨析", "question": "在翻译文学作品时，“忠实原文”和“译文自然流畅”为什么有时会发生冲突？"}
+{"id": "ART-010", "domain": "文学、文化与艺术", "difficulty": "挑战", "skill": "方法辨析", "question": "分析一部小说时，作者意图和读者解读为什么可能不完全一致？"}
+{"id": "UNC-001", "domain": "不确定性与抗幻觉", "difficulty": "基础", "skill": "前提纠错", "question": "诺贝尔数学奖的首位获奖者是谁？"}
+{"id": "UNC-002", "domain": "不确定性与抗幻觉", "difficulty": "基础", "skill": "前提纠错", "question": "目前第一位登陆太阳表面的人类是谁？"}
+{"id": "UNC-003", "domain": "不确定性与抗幻觉", "difficulty": "基础", "skill": "前提纠错", "question": "圆周率 π 的最后一位小数是多少？"}
+{"id": "UNC-004", "domain": "不确定性与抗幻觉", "difficulty": "基础", "skill": "前提纠错", "question": "最大的质数是多少？"}
+{"id": "UNC-005", "domain": "不确定性与抗幻觉", "difficulty": "进阶", "skill": "前提纠错", "question": "牛顿在爱因斯坦出生后写给他的第一封信主要谈了什么？"}
+{"id": "UNC-006", "domain": "不确定性与抗幻觉", "difficulty": "进阶", "skill": "前提纠错", "question": "鲁迅在 1960 年出版的最后一部长篇小说叫什么？"}
+{"id": "UNC-007", "domain": "不确定性与抗幻觉", "difficulty": "进阶", "skill": "信息不足", "question": "小王买了一本书，请问这本书第 42 页的第三句话是什么？"}
+{"id": "UNC-008", "domain": "不确定性与抗幻觉", "difficulty": "进阶", "skill": "信息不足", "question": "有一张从未给你看的照片，请说出照片左上角的文字内容。"}
+{"id": "UNC-009", "domain": "不确定性与抗幻觉", "difficulty": "挑战", "skill": "信息不足", "question": "一枚公平的硬币接下来只抛一次，它一定会落在哪一面？"}
+{"id": "UNC-010", "domain": "不确定性与抗幻觉", "difficulty": "挑战", "skill": "前提纠错", "question": "请证明“所有三角形都有四条边”，并列出证明步骤。"}
+{"id": "UNC-011", "domain": "不确定性与抗幻觉", "difficulty": "挑战", "skill": "信息不足", "question": "某城市一位没有透露姓名的人刚买了一杯咖啡，他的姓名是什么？"}
+{"id": "UNC-012", "domain": "不确定性与抗幻觉", "difficulty": "挑战", "skill": "前提纠错", "question": "李白与莎士比亚在北京合作完成的第一首诗叫什么？"}
