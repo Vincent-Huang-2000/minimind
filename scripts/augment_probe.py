@@ -11,6 +11,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 STAGES = ['concepts', 'merge', 'questions', 'answers', 'build']
+# 每次运行的文件放在 dataset/probe_aug_YYYYMMDD/ 下，按流程顺序编号
+RUNS_DIR = os.path.join(ROOT, 'dataset')
+RUN_PREFIX = 'probe_aug_'
 
 # 每个概念从这里抽题型；另按 --false_premise_ratio 把最后一题换成“错误前提”，训练模型识破错误说法
 QUESTION_TYPES = {
@@ -72,6 +75,18 @@ def write_jsonl(path, rows):
 def require(path, stage):
     if not os.path.exists(path): raise SystemExit(f'找不到 {path}，请先运行 --stage {stage}')
     return read_jsonl(path)
+
+
+def resolve_work_dir(args):
+    """没指定 --work_dir 时：新跑（concepts / all 且不续跑）用当天日期的目录，同一天重跑会覆盖；
+    其余阶段和 --resume 1 接着用最近一次的目录，跨天也能续上。"""
+    if args.work_dir: return args.work_dir
+    runs = sorted(d for d in os.listdir(RUNS_DIR) if re.fullmatch(rf'{RUN_PREFIX}\d{{8}}', d)) if os.path.isdir(RUNS_DIR) else []
+    starts_run = args.stage in ('concepts', 'all')
+    if starts_run and (not args.resume or not runs):
+        return os.path.join(RUNS_DIR, RUN_PREFIX + time.strftime('%Y%m%d'))
+    if not runs: raise SystemExit(f'{RUNS_DIR} 下还没有 {RUN_PREFIX}YYYYMMDD 目录：先运行 --stage concepts（或 all），或用 --work_dir 指定目录')
+    return os.path.join(RUNS_DIR, runs[-1])
 
 
 def load_done(path, key):
@@ -321,8 +336,8 @@ def main():
     parser = argparse.ArgumentParser(description="调用 DeepSeek API，把知识探针题库扩增成 SFT 数据：提取概念 -> 合并去重 -> 围绕概念出题 -> 生成回答 -> 组装")
     parser.add_argument('--stage', required=True, choices=STAGES + ['all'], help="concepts=从每道题提取概念；merge=合并去重成概念表（不调 API）；questions=围绕每个概念出题；answers=生成回答；build=过滤并组装 SFT jsonl（不调 API）；all=依次全部执行")
     parser.add_argument('--data', default=os.path.join(ROOT, 'eval_data', 'small_llm_knowledge_probe_142.jsonl'), type=str, help="题库 jsonl（每行至少含 id 和 question）")
-    parser.add_argument('--work_dir', default=os.path.join(ROOT, 'dataset'), type=str, help="中间文件目录（probe_aug_*.jsonl），默认 dataset/，已被 .gitignore 忽略")
-    parser.add_argument('--output', default='', type=str, help="最终 SFT 数据，默认 {work_dir}/sft_probe_aug.jsonl，可直接作为 train_full_sft.py 的 --data_path")
+    parser.add_argument('--work_dir', default='', type=str, help="本次运行的文件目录，默认 dataset/probe_aug_YYYYMMDD/（已被 .gitignore 忽略）：新跑（concepts / all 且不续跑）用当天日期，其余阶段和 --resume 1 用最近一次的目录")
+    parser.add_argument('--output', default='', type=str, help="最终 SFT 数据，默认 {work_dir}/5_sft.jsonl，可直接作为 train_full_sft.py 的 --data_path")
     parser.add_argument('--model', default='deepseek-flash', type=str, help="DeepSeek 模型名（deepseek-flash / deepseek-v4-pro）")
     parser.add_argument('--base_url', default='https://api.deepseek.com', type=str, help="API 地址，API key 从环境变量 DEEPSEEK_API_KEY 读取")
     parser.add_argument('--env_file', default=os.path.join(ROOT, '.env'), type=str, help="启动时读取的环境变量文件，默认仓库根目录的 .env（模板见 .env.example）")
@@ -345,14 +360,16 @@ def main():
     args = parser.parse_args()
 
     load_env_file(args.env_file)
+    args.work_dir = resolve_work_dir(args)
     os.makedirs(args.work_dir, exist_ok=True)
-    if not args.output: args.output = os.path.join(args.work_dir, 'sft_probe_aug.jsonl')
+    print(f'工作目录：{args.work_dir}')
+    if not args.output: args.output = os.path.join(args.work_dir, '5_sft.jsonl')
     stem = os.path.splitext(args.output)[0]
     files = {
-        'raw': os.path.join(args.work_dir, 'probe_aug_concepts_raw.jsonl'),
-        'concepts': os.path.join(args.work_dir, 'probe_aug_concepts.jsonl'),
-        'questions': os.path.join(args.work_dir, 'probe_aug_questions.jsonl'),
-        'answers': os.path.join(args.work_dir, 'probe_aug_answers.jsonl'),
+        'raw': os.path.join(args.work_dir, '1_concepts_raw.jsonl'),
+        'concepts': os.path.join(args.work_dir, '2_concepts.jsonl'),
+        'questions': os.path.join(args.work_dir, '3_questions.jsonl'),
+        'answers': os.path.join(args.work_dir, '4_answers.jsonl'),
         'meta': f'{stem}_meta.jsonl',
         'dropped': f'{stem}_dropped.jsonl',
     }

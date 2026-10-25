@@ -5,6 +5,7 @@ out
 website/
 docs-minimind/
 dataset/*.jsonl
+dataset/probe_aug_*/
 dataset/.msc
 dataset/.mv
 dataset/._____temp/
