@@ -24,3 +24,4 @@
 - 推理权重输出到 `out/`（可用 `--save_dir` 修改）；续训文件写入 `checkpoints/`，该路径在脚本中写死，要放到 Drive 需建软链接或改代码。
 - 数据集放在 `dataset/`，用 `python scripts/download_dataset.py` 下载（默认 mini 组合，`--list` 查看全部）；`dataset/*.jsonl` 已加入 `.gitignore`，不要提交数据文件。
 - 评测：`python eval_llm.py --weight full_sft`。
+- 训练曲线：各训练脚本在每个 `log_interval` 把指标追加写入 `{save_dir}/{save_weight}_metrics.jsonl`（LoRA 用 `lora_name`），训练结束自动生成同名 `.png`（`trainer_utils.MetricsLogger`，绘图在 `scripts/plot_metrics.py`，依赖 matplotlib，Colab 自带；缺失时只告警不影响训练）。新训练覆盖旧文件，`--from_resume 1` 续训保留断点之前的记录、丢弃断点之后会被重跑的记录。训练中途或训练后手动出图：`python ../scripts/plot_metrics.py ../out/pretrain_metrics.jsonl`；在 Colab 里显示：`from IPython.display import Image; Image('../out/pretrain_metrics.png')`。指标文件跟权重一起放在 `save_dir`，指向 Drive 时曲线也会保存在 Drive。详细用法见 `docs/training_metrics.md`。

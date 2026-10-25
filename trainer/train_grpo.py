@@ -22,7 +22,7 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 from transformers import AutoModel
 from model.model_minimind import MiniMindConfig, MiniMindForCausalLM
 from dataset.lm_dataset import RLAIFDataset
-from trainer.trainer_utils import Logger, is_main_process, lm_checkpoint, init_distributed_mode, setup_seed, SkipBatchSampler, init_model, LMForRewardModel
+from trainer.trainer_utils import Logger, is_main_process, lm_checkpoint, init_distributed_mode, setup_seed, SkipBatchSampler, init_model, LMForRewardModel, MetricsLogger
 from trainer.rollout_engine import create_rollout_engine
 
 warnings.filterwarnings('ignore')
@@ -166,6 +166,7 @@ def grpo_train_epoch(epoch, loader, iters, rollout_engine, ref_model, reward_mod
                    f'Adv Std: {advantages_std_val:.4f}, Adv Mean: {advantages_mean_val:.4f}, '
                    f'Actor Loss: {policy_loss_val:.4f}, Avg Response Len: {avg_len_val:.2f}, Learning Rate: {current_lr:.8f}')
 
+            metrics.log(epoch, step, iters, reward=avg_reward_val, kl_ref=kl_ref_val, advantages_std=advantages_std_val, advantages_mean=advantages_mean_val, policy_loss=policy_loss_val, avg_response_len=avg_len_val, learning_rate=current_lr)
             if wandb and is_main_process():
                 wandb.log({
                     "reward": avg_reward_val,
@@ -246,6 +247,7 @@ if __name__ == "__main__":
     lm_config = MiniMindConfig(hidden_size=args.hidden_size, num_hidden_layers=args.num_hidden_layers,
                                max_seq_len=args.max_seq_len + args.max_gen_len, use_moe=bool(args.use_moe))
     ckp_data = lm_checkpoint(lm_config, weight=args.save_weight, save_dir='../checkpoints') if args.from_resume==1 else None
+    metrics = MetricsLogger(args.save_dir, args.save_weight, ckp_data)
     
     # ========== 3. 设置混合精度 ==========
     device_type = "cuda" if "cuda" in args.device else "cpu"
@@ -321,6 +323,8 @@ if __name__ == "__main__":
         else:
             grpo_train_epoch(epoch, loader, len(loader), rollout_engine, ref_model, reward_model, 0, wandb, use_sglang = (args.rollout_engine == "sglang"))
     
+    metrics.plot()
+
     # ========== 9. 清理分布进程 ==========
     if dist.is_initialized():
         dist.barrier()

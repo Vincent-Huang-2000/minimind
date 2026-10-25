@@ -6,6 +6,7 @@ import sys
 __package__ = "trainer"
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import ast
+import json
 import operator
 import random
 import math
@@ -116,6 +117,38 @@ def lm_checkpoint(lm_config, weight='full_sft', model=None, optimizer=None, epoc
                 Logger(f'GPU数量变化({saved_ws}→{current_ws})，step已自动转换为{ckp_data["step"]}')
             return ckp_data
         return None
+
+
+class MetricsLogger:
+    """训练指标追加写入 {save_dir}/{name}_metrics.jsonl（每行一次 log），供 scripts/plot_metrics.py 画图。
+    新训练会覆盖同名旧文件；续训（传入 ckp_data）时保留断点之前的记录，丢弃断点之后、会被重跑的记录。"""
+    def __init__(self, save_dir, name, ckp_data=None):
+        self.path = f'{save_dir}/{name}_metrics.jsonl'
+        if not is_main_process(): return
+        keep = []
+        if ckp_data and os.path.exists(self.path):
+            resume_pos = (ckp_data['epoch'], ckp_data.get('step', 0))
+            with open(self.path, encoding='utf-8') as f:
+                for line in f:
+                    try: row = json.loads(line)
+                    except ValueError: continue  # Colab 断连可能留下写了一半的行
+                    if (row['epoch'], row['step']) <= resume_pos: keep.append(json.dumps(row) + '\n')
+        with open(self.path, 'w', encoding='utf-8') as f:
+            f.writelines(keep)
+
+    def log(self, epoch, step, iters, **metrics):
+        if not is_main_process(): return
+        with open(self.path, 'a', encoding='utf-8') as f:  # 每次打开即关闭，Colab 断连时已写入的不丢
+            f.write(json.dumps({'epoch': epoch, 'step': step, 'iters': iters, **metrics}) + '\n')
+
+    def plot(self):
+        """训练结束时出图；缺 matplotlib 等问题只提示，不影响训练产物"""
+        if not is_main_process(): return
+        try:
+            from scripts.plot_metrics import plot_metrics
+            Logger(f'指标曲线已保存: {plot_metrics(self.path)}')
+        except Exception as e:
+            Logger(f'[plot] 跳过出图: {e}（可稍后运行 python ../scripts/plot_metrics.py {self.path}）')
 
 
 def init_model(lm_config, from_weight='pretrain', tokenizer_path='../model', save_dir='../out', device='cuda'):
