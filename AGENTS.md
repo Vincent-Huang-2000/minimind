@@ -23,6 +23,7 @@
 - 训练脚本在 `trainer/`，需在 `trainer/` 目录下运行，脚本中的 `../dataset`、`../out`、`../checkpoints` 都是相对路径。
 - 推理权重输出到 `out/`（可用 `--save_dir` 修改）；续训文件写入 `checkpoints/`，该路径在脚本中写死，要放到 Drive 需建软链接或改代码。
 - 数据集放在 `dataset/`，用 `python scripts/download_dataset.py` 下载（默认 mini 组合，`--list` 查看全部）；`dataset/*.jsonl` 已加入 `.gitignore`，不要提交数据文件。
+- 只想看数据结构时不要下载完整数据集：`python scripts/peek_dataset.py`（可加 `--files`、`-n`）从 HuggingFace 流式读取每个文件的前 N 行（默认 20），存到 `dataset/peek/`（已被 `.gitignore` 忽略）并打印字段和首条样本。
 - 评测：`python eval_llm.py --weight full_sft`。
 - 评测题库放在 `eval_data/`（如知识探针 `small_llm_knowledge_probe_142.jsonl`），与训练数据 `dataset/` 分开；不在 `.gitignore` 范围内，可以提交。
 - 题库批量作答：`python scripts/run_probe.py --weight full_sft`（默认读 `eval_data/small_llm_knowledge_probe_142.jsonl`，换题库用 `--data`），在仓库根目录运行；每题追加写入 `{save_dir}/{weight}_{题库名}_answers.jsonl`（原字段 + `answer` / `gen_tokens` / `truncated`），断连后加 `--resume 1` 续跑。
