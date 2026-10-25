@@ -9,3 +9,5 @@ dataset/.msc
 dataset/.mv
 dataset/._____temp/
 dataset/.cache/
+.env
+.venv/
