@@ -15,7 +15,7 @@ from torch import optim, nn
 from torch.nn.parallel import DistributedDataParallel
 from torch.utils.data import DataLoader, DistributedSampler
 from model.model_minimind import MiniMindConfig
-from dataset.lm_dataset import PretrainDataset
+from dataset.lm_dataset import PretrainDataset, PackedPretrainDataset
 from trainer.trainer_utils import get_lr, Logger, is_main_process, lm_checkpoint, init_distributed_mode, setup_seed, init_model, SkipBatchSampler, MetricsLogger
 
 warnings.filterwarnings('ignore')
@@ -92,6 +92,8 @@ if __name__ == "__main__":
     parser.add_argument('--use_moe', default=0, type=int, choices=[0, 1], help="是否使用MoE架构（0=否，1=是）")
     parser.add_argument('--seed', default=42, type=int, help="随机种子（DDP下每个rank为seed+rank，每轮为seed+epoch）")
     parser.add_argument("--data_path", type=str, default="../dataset/pretrain_t2t_mini.jsonl", help="预训练数据路径")
+    parser.add_argument('--pack', default=0, type=int, choices=[0, 1], help="是否把多篇文档装箱打包进同一行以减少padding（0=否，1=是）；续训时不要改动")
+    parser.add_argument('--pack_cache_dir', type=str, default=None, help="打包缓存目录，默认数据文件同目录的pack_cache/；Colab上建议指向Drive")
     parser.add_argument('--from_weight', default='none', type=str, help="基于哪个权重训练，为none则从头开始")
     parser.add_argument('--from_resume', default=0, type=int, choices=[0, 1], help="是否自动检测&续训（0=否，1=是）")
     parser.add_argument("--use_wandb", action="store_true", help="是否使用wandb")
@@ -126,7 +128,10 @@ if __name__ == "__main__":
     
     # ========== 5. 定义模型、数据、优化器 ==========
     model, tokenizer = init_model(lm_config, args.from_weight, device=args.device)
-    train_ds = PretrainDataset(args.data_path, tokenizer, max_length=args.max_seq_len)
+    if args.pack:
+        train_ds = PackedPretrainDataset(args.data_path, tokenizer, max_length=args.max_seq_len, cache_dir=args.pack_cache_dir, seed=args.seed)
+    else:
+        train_ds = PretrainDataset(args.data_path, tokenizer, max_length=args.max_seq_len)
     train_sampler = DistributedSampler(train_ds) if dist.is_initialized() else None
     scaler = torch.cuda.amp.GradScaler(enabled=(args.dtype == 'float16'))
     optimizer = optim.AdamW(model.parameters(), lr=args.learning_rate)

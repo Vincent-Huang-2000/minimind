@@ -1,9 +1,11 @@
 from torch.utils.data import Dataset
 import torch
+import torch.distributed as dist
 import json
 import os
 import random
 from datasets import load_dataset, Features, Sequence, Value
+from dataset.pretrain_packing import load_or_build, PackedRows
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 def pre_processing_chat(conversations, add_system_ratio=0.2):
@@ -55,6 +57,31 @@ class PretrainDataset(Dataset):
         input_ids = torch.tensor(input_ids, dtype=torch.long)
         labels = input_ids.clone()
         labels[input_ids == self.tokenizer.pad_token_id] = -100
+        return input_ids, labels
+
+
+class PackedPretrainDataset(Dataset):
+    """装箱打包版预训练数据：每行装入多篇完整文档（以 bos/eos 分隔），超长文档切段而不是截断，
+    行尾不足部分补 pad。打包结果缓存在 cache_dir（默认数据文件同目录的 pack_cache/），详见 dataset/pretrain_packing.py"""
+    def __init__(self, data_path, tokenizer, max_length=512, cache_dir=None, seed=42):
+        super().__init__()
+        self.max_length = max_length
+        self.pad_id = tokenizer.pad_token_id
+        # 多卡时只由 rank 0 构建缓存，其余 rank 等它写完再读
+        is_main = not dist.is_initialized() or dist.get_rank() == 0
+        prefix = load_or_build(data_path, tokenizer, max_length, seed, cache_dir, build=is_main)
+        if dist.is_initialized(): dist.barrier()
+        self.rows = PackedRows(prefix)
+
+    def __len__(self):
+        return len(self.rows)
+
+    def __getitem__(self, index):
+        tokens = torch.from_numpy(self.rows.row(index).astype('int64'))
+        input_ids = torch.full((self.max_length,), self.pad_id, dtype=torch.long)
+        input_ids[:len(tokens)] = tokens
+        labels = input_ids.clone()
+        labels[len(tokens):] = -100
         return input_ids, labels
 
 
