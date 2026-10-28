@@ -31,6 +31,7 @@
 | `out/` | 推理权重、训练曲线 | 可用 `--save_dir` 修改，Colab 上指向 Drive |
 | `checkpoints/` | 续训文件 | 路径在脚本中写死，要放到 Drive 需建软链接或改代码 |
 | `scripts/` | 数据、评测、分析工具 | 在仓库根目录运行 |
+| `experiment/` | 对比实验，每个实验一个子目录，带自己的 README | 在仓库根目录运行；输出默认写到 `out/` 下 |
 | `docs/` | 各功能的详细文档 | 改动对应功能时同步更新 |
 
 - `eval_llm.py` 在仓库根目录运行。
@@ -45,6 +46,7 @@
 | 选 `--max_seq_len` | `python scripts/token_length_stats.py --data dataset/sft_t2t_mini.jsonl --current 768` | 根目录 | `docs/token_length_stats.md` |
 | 预训练装箱打包 | `python train_pretrain.py --pack 1 --pack_cache_dir <Drive 目录>` | `trainer/` | `docs/pretrain_packing.md` |
 | 训练曲线出图 | `python ../scripts/plot_metrics.py ../out/pretrain_metrics.jsonl` | `trainer/` | `docs/training_metrics.md` |
+| 打包效果对比 | 见 `experiment/pack_compare/README.md`（切留出集 → 利用率 → 两次训练 → 曲线对比 → 留出集 loss） | 根目录（Colab） | `experiment/pack_compare/README.md` |
 | 对话评测 | `python eval_llm.py --weight full_sft` | 根目录 | — |
 | 题库批量作答 | `python scripts/run_probe.py --weight full_sft` | 根目录 | — |
 | 题库扩增成 SFT 数据 | `python scripts/augment_probe.py --stage all`（收费） | 根目录 | `docs/augment_probe.md` |
@@ -70,6 +72,7 @@
 - 多篇完整文档共用一行，超长文档按 `max_seq_len` 切段（不再截断丢弃）；没有文档隔离掩码，同一行的文档能互相看到。
 - 首次运行分词并缓存到 `--pack_cache_dir`（默认数据文件同目录的 `pack_cache/`），Colab 上应放 Drive；数据、`max_seq_len`、`seed`、tokenizer 不变时直接复用。
 - **续训时不要改 `--pack` / `--max_seq_len` / `--data_path` / `--seed`**，否则断点步数对应到别的数据，且不会报错。
+- 打包与不打包的对比实验在 `experiment/pack_compare/`：两次训练用不同的 `--save_weight`，质量结论看留出集 loss（`eval_heldout_loss.py`，需要 torch，在 Colab 上跑），训练 loss 只看趋势。
 - 打包核心 `dataset/pretrain_packing.py` 只依赖 numpy 和 tokenizer，本地可用 `.venv` 冒烟。
 
 ### 训练曲线

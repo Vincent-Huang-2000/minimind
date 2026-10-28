@@ -61,7 +61,7 @@ python train_pretrain.py --pack 1 --pack_cache_dir /content/drive/MyDrive/minimi
 
 ## 6. 建议的效果对比
 
-在 Colab 上用同一份数据、相同的 token 总量各训一次（打包和不打包），比较按 token 对齐的 loss 曲线；再分别做 SFT，用 `scripts/run_probe.py` 比较作答。
+在 Colab 上用同一份数据各训一次（打包和不打包），比较数据利用率、按 token 对齐的 loss 曲线和留出集 loss。步骤和脚本见 [`experiment/pack_compare/README.md`](../experiment/pack_compare/README.md)。还想看下游效果，可以再分别做 SFT，用 `scripts/run_probe.py` 比较作答。
 
 ## 7. 常见问题
 
