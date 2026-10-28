@@ -24,6 +24,7 @@
 - 推理权重输出到 `out/`（可用 `--save_dir` 修改）；续训文件写入 `checkpoints/`，该路径在脚本中写死，要放到 Drive 需建软链接或改代码。
 - 数据集放在 `dataset/`，用 `python scripts/download_dataset.py` 下载（默认 mini 组合，`--list` 查看全部）；`dataset/*.jsonl` 已加入 `.gitignore`，不要提交数据文件。
 - 只想看数据结构时不要下载完整数据集：`python scripts/peek_dataset.py`（可加 `--files`、`-n`）从 HuggingFace 流式读取每个文件的前 N 行（默认 20），存到 `dataset/peek/`（已被 `.gitignore` 忽略）并打印字段和首条样本。
+- 选 `--max_seq_len` 前先看数据的 token 长度分布：`python scripts/token_length_stats.py --data dataset/sft_t2t_mini.jsonl --current 768`（在仓库根目录运行，只需 `transformers`，不需要 torch，本地或 Colab 都能跑；可一次传多个文件）。按训练时的拼接方式计算长度：`text` 字段按预训练（含 bos/eos），`conversations` 按 SFT（套 chat template，去掉空思考标签，不加随机 system），`chosen` / `rejected` 按 DPO 取两者较长的；PPO / GRPO / Agent RL 数据加 `--type prompt`，只统计去掉最后一条回答后的 prompt。默认蓄水池抽样 `--sample 20000` 条（`0` 为全部），`--limit` 只读前 N 行用于冒烟。输出各分位数，以及 `--candidates` 中每个候选长度下的截断样本比例、被截掉的 token 比例、padding 占比，并标出覆盖 `--target_pct`（默认 p95）的最小 64 倍数。训练数据集会把每条样本补齐到 `max_seq_len` 且不做拼接，所以 padding 占比基本就是浪费掉的算力。
 - 评测：`python eval_llm.py --weight full_sft`。
 - 评测题库放在 `eval_data/`（如知识探针 `small_llm_knowledge_probe_142.jsonl`），与训练数据 `dataset/` 分开；不在 `.gitignore` 范围内，可以提交。
 - 题库批量作答：`python scripts/run_probe.py --weight full_sft`（默认读 `eval_data/small_llm_knowledge_probe_142.jsonl`，换题库用 `--data`），在仓库根目录运行；每题追加写入 `{save_dir}/{weight}_{题库名}_answers.jsonl`（原字段 + `answer` / `gen_tokens` / `truncated`），断连后加 `--resume 1` 续跑。
